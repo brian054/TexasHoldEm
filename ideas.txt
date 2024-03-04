@@ -1,7 +1,0 @@
-Where to start?
-
-Well you know how poker is played, so let's set up a heads up mini game.
-
-AI: 3 difficulties?? Idk each computer player could have a diff difficulty level
-
-
