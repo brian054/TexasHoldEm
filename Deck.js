@@ -1,4 +1,5 @@
 import { Card } from "./Card.js"
+import { getRandomNumber } from "./helpers.js";
 
 const suits = ['Hearts','Diamonds','Clubs','Spades']
 const values = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King']
@@ -8,12 +9,7 @@ export class Deck {
     // the goal is to abstract away as much as possible
     
     constructor() {
-        this.#cards = [];
-        for (const suit of suits) {
-            for (const value of values) {
-                this.#cards.push(new Card(suit, value))
-            }
-        }
+        this.resetDeck();
     }
 
     // Fisher-Yates shuffle algo
@@ -32,16 +28,31 @@ export class Deck {
     }
 
     drawCard() {
-        // pick a random card then mark the picked card as removed=true
-
+        // pick a random card then remove it from the deck
+        let randomIndex = getRandomNumber([0, this.#cards.length - 1]);
+        let cardDrawn = this.#cards[randomIndex];
+        this.#cards.splice(randomIndex, 1);
+        console.log(cardDrawn);
+        return cardDrawn;
     }
 
     resetDeck() {
-        // reset everything to removed = false
+        this.#cards = [];
+        for (const suit of suits) {
+            for (const value of values) {
+                this.#cards.push(new Card(suit, value))
+            }
+        }
+    }
 
-        // Display all card objects
+    // Testing
+    printDeck() {
         for (let i = 0; i < this.#cards.length; i++) {
             console.log(this.#cards[i]);
         }
+    }
+
+    getLength() {
+        return this.#cards.length;
     }
 }

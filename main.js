@@ -54,7 +54,18 @@ let enemyChips = chipStartAmount;
 // }
 
 const deck = new Deck();
-deck.resetDeck();
+//deck.resetDeck();
+//console.log("what");
+let count = 1
+for (let i = 0; i < 52; i++) {
+    deck.drawCard();
+    console.log(count++);
+}
+
+//deck.printDeck();
+
+
+
 
 // Next Steps
 /*
